@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arif Bilal Erdoğan - Endüstri Mühendisi & Bilgisayar Mühendisi</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f1629 0%, #1a2238 50%, #26304e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 22, 41, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a90e2;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #4a90e2;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4a90e2;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #4a90e2, #7bb3f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #b8c5d6;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #1e3a8a, #4a90e2);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #4a90e2;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #4a90e2, #7bb3f0);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-card {
+            background: rgba(26, 34, 56, 0.8);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 144, 226, 0.2);
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            overflow: hidden;
+            border: 3px solid #4a90e2;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .contact-info {
+            margin-top: 1rem;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+            color: #b8c5d6;
+        }
+
+        .contact-info a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b8c5d6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(26, 34, 56, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: #4a90e2;
+            margin-bottom: 1rem;
+        }
+
+        .education-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            background: rgba(26, 34, 56, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #4a90e2;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-date {
+            color: #4a90e2;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-subtitle {
+            color: #b8c5d6;
+            margin-bottom: 1rem;
+        }
+
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: rgba(26, 34, 56, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.2rem;
+            color: #4a90e2;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-org {
+            color: #b8c5d6;
+        }
+
+        .experience-date {
+            color: #7bb3f0;
+            font-size: 0.9rem;
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: rgba(26, 34, 56, 0.8);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(74, 144, 226, 0.2);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            color: #4a90e2;
+        }
+
+        .cert-info h4 {
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .cert-info p {
+            color: #b8c5d6;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background: rgba(15, 22, 41, 0.95);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #1e3a8a, #4a90e2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">AE</div>
+            <ul class="nav-links">
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#about">Hakkımda</a></li>
+                <li><a href="#education">Eğitim</a></li>
+                <li><a href="#experience">Deneyim</a></li>
+                <li><a href="#skills">Beceriler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Arif Bilal Erdoğan</h1>
+            <p>Geleceği veriler şekillendiriyor; ben ise bu geleceği anlamlandırarak yön vermeyi hedefleyen, analitik ve çözüm odaklı bir mühendis adayıyım.</p>
+            <a href="#about" class="cta-button">Daha Fazla Keşfet</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>Hakkımda</h2>
+        <div class="about-content">
+            <div class="profile-card">
+                <div class="profile-image">
+                    <img src="arif.jpg" alt="Arif Bilal Erdoğan">
+                </div>
+                <h3>Arif Bilal Erdoğan</h3>
+                <p>Endüstri Mühendisi & </p>
+<p> Bilgisayar Mühendisi</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-calendar"></i> 02/11/2004</p>
+                    <p><i class="fas fa-phone"></i> (+90) 551 123 40 48</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:ariferdogan043@gmail.com">ariferdogan043@gmail.com</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kütahya/Gediz</p>
+                </div>
+            </div>
+            <div class="about-text">
+                <p>Düzce Üniversitesi'nde çift anadal programıyla Endüstri Mühendisliği ve Bilgisayar Mühendisliği eğitimi alıyorum. ERP sistemleri, veri analitiği ve yöneylem araştırması alanlarında uzmanlaşarak süreçleri iyileştiren, veriye dayalı çözümler geliştirmeye odaklanıyorum.</p>
+                
+                <p>Yöneylem araştırmasının, karmaşık problemlere sistematik ve matematiksel yaklaşımlar sunarak karar alma süreçlerini nasıl daha etkili hale getirdiğini deneyimleyerek öğrendim. Bu disiplinden edindiğim analitik bakış açısını veri bilimi ile birleştirerek; işletmelere stratejik ve operasyonel düzeyde katkı sağlayabilecek bir potansiyel oluşturduğuma inanıyorum.</p>
+                
+                <p>Güçlü analitik düşünme ve problem çözme becerilerimle, teknolojiyi yalnızca bir araç değil, aynı zamanda stratejik bir kaldıraç olarak kullanmayı önemsiyorum.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <h2>Eğitim</h2>
+        <div class="education-timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">09/2022 – Mevcut</div>
+                <div class="timeline-title">Endüstri Mühendisliği</div>
+                <div class="timeline-subtitle">Düzce Üniversitesi</div>
+                <p>GPA: 3.58/4.00</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">10/2024 – Mevcut</div>
+                <div class="timeline-title">Bilgisayar Mühendisliği (Çift Anadal)</div>
+                <div class="timeline-subtitle">Düzce Üniversitesi</div>
+                <p>GPA: 3.41/4.00</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <h2>Deneyim & Liderlik</h2>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Divan Kurulu Başkanı</div>
+                        <div class="experience-org">Kalite Topluluğu (KALİTET)</div>
+                    </div>
+                    <div class="experience-date">06/2025 – Mevcut</div>
+                </div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">EkomAI Lideri</div>
+                        <div class="experience-org">Teknofest Finansal Teknolojiler</div>
+                    </div>
+                    <div class="experience-date">06/2024 – Mevcut</div>
+                </div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Kalite ve Teknoloji Takımı Kaptanı</div>
+                        <div class="experience-org">Kalite ve Teknoloji Takımı (KALİTEK)</div>
+                    </div>
+                    <div class="experience-date">05/2024 – 06/2025</div>
+                </div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Proje ve Ar-Ge Departman Başkanı</div>
+                        <div class="experience-org">Kalite Topluluğu (KALİTET)</div>
+                    </div>
+                    <div class="experience-date">04/2024 – 06/2025</div>
+                </div>
+                <p>Projelerimizin hedeflere ulaşması için gerekli stratejik planlamayı yapıyorum ve ekiplerin uyum içinde çalışmasını sağlıyorum. Proje ve Ar-Ge departmanında, topluluğumuzun projelerini etkin bir şekilde yürütmekle birlikte, takımların koordinasyonunu ve yönetimini sağlıyorum.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Teknik Beceriler</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-code"></i></div>
+                <h3>Programlama</h3>
+                <p>C#, C/C++, SQL Server</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Veri Analizi</h3>
+                <p>Yöneylem Araştırması, Algoritma Geliştirme</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-cogs"></i></div>
+                <h3>Sistemler</h3>
+                <p>ERP Sistemleri, Süreç Optimizasyonu</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-palette"></i></div>
+                <h3>Tasarım</h3>
+                <p>Canva, UI/UX Tasarım</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Sertifikalar</h2>
+        <div class="certifications-grid">
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                <div class="cert-info">
+                    <h4>ISO 9001:2015 Kalite Yönetimi Standardı</h4>
+                    <p>Kalite Topluluğu - 02/10/2024</p>
+                </div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-code"></i></div>
+                <div class="cert-info">
+                    <h4>C# ile DevExpress'de SQL Tabanlı Ticari Otomasyon</h4>
+                    <p>Udemy - 12/12/2024</p>
+                </div>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <div class="cert-info">
+                    <h4>ISO 9001:2015 Kalite Yönetim Sistemi</h4>
+                    <p>Eğitim Sepeti, Sigmacert Global - 10/12/2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="footer">
+        <div class="social-links">
+            <a href="mailto:ariferdogan043@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/ariferdoğan" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://arif-erdogan.github.io/ariferdogan/index.html" target="_blank"><i class="fas fa-globe"></i></a>
+            <a href="tel:+905511234048"><i class="fas fa-phone"></i></a>
+        </div>
+        <p>&copy; 2025 Arif Bilal Erdoğan. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(15, 22, 41, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(15, 22, 41, 0.95)';
+            }
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.skill-card, .timeline-item, .experience-card, .cert-card');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll(); // Run once on load
+    </script>
+</body>
+</html>
